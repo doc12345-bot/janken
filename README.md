@@ -1,0 +1,1 @@
+First session - created a function that generates a random result from the winning options - rock, paper or scissors. I also linked it all to the index file.
