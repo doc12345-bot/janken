@@ -1,79 +1,86 @@
-    let playerWin = "playerWin";
-    let computerWin = "computerWin";
-    let tie = "tie";
-    let choice;
+let playerWin = "playerWin";
+let computerWin = "computerWin";
+let tie = "tie";
+let error;
+let choice;
+let rock = "ROCK";
+let scissors = "SCISSORS";
+let paper = "PAPER";
+var computerScore = 0;
+var playerScore = 0;
+var tied = 0; 
 
 function game() {
     for (let i = 0 ; i < 5; i++) {
         let choice = prompt("Rock, paper or scissors?");
+    }
+}
 
-        let computerScore = 0;
-        let playerScore = 0;
-        let tie = 0;    
+function multiplier() {
+    let number = Math.floor(Math.random() * 100);
+        if (number <=33) {
+            return rock;
+        } else if (number >=66) {
+            return paper;
+        } else {
+            return scissors;
+        }
+ };
 
 function computerPlay() {
-    let string = ["ROCK", "PAPER", "SCISSORS"];
-    let multiplier = Math.floor(Math.random() * 3);
-    return string[multiplier];
-    };
-    
-function janken(playerSelection, computerSelection) {
 
-    computerSelection = computerPlay();
-    playerSelection = choice.toUpperCase();
-    if (playerSelection === computerSelection) {
-        alert `Player plays ${playerSelection} and computer plays ${computerSelection}, it's a tie!`;
+    if(playerSelection.toUpperCase() ==  `ROCK` && computerSelection == rock){
+        console.log("Player plays ROCK and computer plays ROCK. It's a tie!");
+        return tie
+    } else if (playerSelection.toUpperCase() == `ROCK` && computerSelection == paper){
+        console.log("PLayer plays ROCK and computer plays PAPER. Computer wins!");
+        return computerWin;
+    } else if (playerSelection.toUpperCase() == `ROCK` && computerSelection == scissors) {
+        console.log("Player plays ROCK and computer plays SCISSORS. Plays wins!");
+        return playerWin;
+
+    } else if (playerSelection.toUpperCase() == `PAPER` && computerSelection == paper) {
+        console.log("Player plays PAPER and computer plays PAPER. It's a tie!");
         return tie;
-    } else if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
-        alert `Player plays ${playerSelection} and computer plays ${computerSelection}, player wins!`;
+    } else if (playerSelection.toUpperCase() == `PAPER` && computerSelection == rock) {
+        console.log("Player plays PAPER and computer plays ROCK. Player wins!");
         return playerWin;
-    } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {
-        alert `Player plays ${playerSelection} and computer plays ${computerSelection}, computer wins!`;
+    } else if (playerSelection.toUpperCase() == `PAPER` && computerSelection == scissors) {
+        console.log("Player plays PAPER and computer plays SCISSORS. Computer wins!");
         return computerWin;
-    } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
-        alert `Player plays ${playerSelection} and computer plays ${computerSelection}, computer wins!`;
-        return computerWin;
-    } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
-        alert `Player plays ${playerSelection} and computer plays ${computerSelection}, player wins!`;
+
+    } else if (playerSelection.toUpperCase() == `SCISSORS` && computerSelection == scissors) {
+        console.log("Player plays SCISSORS and computer plays SCISSORS. It's a tie!");
+        return tie;
+    } else if (playerSelection.toUpperCase() == `SCISSORS` && computerSelection == paper) {
+        console.log("Player plays SCISSORS and computerp plays PAPER. Player wins!");
         return playerWin;
-    } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-        alert `Player plays ${playerSelection} and computer plays ${computerSelection}, player wins!`;
-        return playerWin;
-    } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-        alert `Player plays ${playerSelection} and computer plays ${computerSelection}, computer wins!`;
+    } else if (playerSelection.toUpperCase() == `SCISSORS` && computerSelection == rock) {
+        console.log("Player plays SCISSORS and computer plays ROCK. Computer wins!");
         return computerWin;
     } else {
-        return `Error, please type "rock", "paper" or "scissors".`
-    }
+        console.log("Please type eithe: rock, paper or scissors.")
+        return error
+    };
 };
 
-        if (janken() === computerWin) {
-                computerScore += 1;
-                console.log(`Computer ${computerScore} : Player ${playerScore} : Tie ${tie}.`);
-            } else if (janken() === playerWin) {
-                playerScore += 1;
-                console.log(`Computer ${computerScore} : Player ${playerScore} : Tie ${tie}.`);
-            } else if (janken() === tie) {
-                tie += 1;
-                console.log(`Computer ${computerScore} : Player ${playerScore} : Tie ${tie}.`);
-            } else {
-                i -= 1;
-                console.log(`Error.`);
-        };
-    }
-};
+
+function janken(playerSelection, computerSelection) {
+computerSelection = computerPlay();
+playerSelection = choice.toUpperCase();
+            if (janken() === computerWin) {
+                    computerScore += 1;
+                    console.log(`Computer ${computerScore} : Player ${playerScore} : Tie ${tied}.`);
+                } else if (janken() === playerWin) {
+                    playerScore += 1;
+                    console.log(`Computer ${computerScore} : Player ${playerScore} : Tie ${tied}.`);
+                } else if (janken() === tie) {
+                    tied += 1;
+                    console.log(`Computer ${computerScore} : Player ${playerScore} : Tie ${tied}.`);
+                } else {
+                    i -= 1;
+                    console.log(`Error.`);
+            };
+        }
 
 game();
-/*     if (janken() === computerWin.includes("computer wins!")) {
-            computerScore += 1;
-            console.log(`Computer ${computerScore} : Player ${playerScore} : Tie ${tie}.`);
-        } else if (janken().includes("player wins!")) {
-            playerScore += 1;
-            console.log(`Computer ${computerScore} : Player ${playerScore} : Tie ${tie}.`);
-        } else if (janken().includes("tie")) {
-            tie += 1;
-            console.log(`Computer ${computerScore} : Player ${playerScore} : Tie ${tie}.`);
-        } else {
-            i -= 1;
-            console.log(`Error.`);
-    }; /*/ 
