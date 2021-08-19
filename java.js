@@ -4,7 +4,11 @@ let paper = "PAPER";
 let computerScore = 0;
 let playerScore = 0;
 let tied = 0; 
+let btn;
 
+btn.addEventListener('click', function(){
+    let playerChoice = input.value.toUpperCase();
+})
 
 function game() {
     for (let i = 1 ; i < 6; i++) {
