@@ -6,12 +6,12 @@ let playerScore = 0;
 let tied = 0; 
 let btn;
 
-btn.addEventListener('click', function(){
-    let playerChoice = input.value.toUpperCase();
-})
+let play = document.addEventListenerAll('click', game);
+
+
+
 
 function game() {
-    for (let i = 1 ; i < 6; i++) {
         const playerSelection = prompt("Rock, paper or scissors?", "type here");
         const computerSelection = computerPlay(Math.floor(Math.random() * 3))
 
@@ -23,7 +23,7 @@ function game() {
                 } else {
                     return scissors;
                 }
-    };
+            };
  
 janken(computerSelection.toUpperCase(), playerSelection.toUpperCase());
     function janken(a, b) {
@@ -52,16 +52,16 @@ janken(computerSelection.toUpperCase(), playerSelection.toUpperCase());
             default:
                 i--;
                 alert("Please type either: rock, paper or scissors.");
+                    }
         }
-    }
-    }
+    
     if (computerScore == playerScore) {
         console.log("Tied game!")
-    } else if (computerScore > playerScore) {
+        } else if (computerScore > playerScore) {
         console.log("Computer wins!")
-    } else {
+        } else {
         console.log("Player wins! Well done.")
-    }
-}   
+        };
+};  
 
 game();
