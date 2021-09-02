@@ -1,67 +1,71 @@
-let rock = "ROCK";
-let scissors = "SCISSORS";
-let paper = "PAPER";
+let rock = "rock";
+let scissors = "scissors";
+let paper = "paper";
 let computerScore = 0;
 let playerScore = 0;
 let tied = 0; 
-let btn;
 
-let play = document.addEventListenerAll('click', game);
+const rockPlay = document.getElementById('rock');
+const paperPlay = document.getElementById('paper');
+const scissorsPlay = document.getElementById('scissors');
 
+const buttons = document.querySelectorAll('button');
 
-
-
-function game() {
-        const playerSelection = prompt("Rock, paper or scissors?", "type here");
-        const computerSelection = computerPlay(Math.floor(Math.random() * 3))
-
-        function computerPlay(number) {
-                if (number === 0) {
-                    return rock;
-                } else if (number === 1) {
-                    return paper;
-                } else {
-                    return scissors;
-                }
-            };
- 
-janken(computerSelection.toUpperCase(), playerSelection.toUpperCase());
-    function janken(a, b) {
-        switch(true){
-            case a == rock && b == rock:
-            case a == paper && b == paper:
-            case a == scissors && b == scissors:
-                console.log(`Player played ${b}, computer played ${a}. It's a tie!`);
-                tied += 1;
-                console.log(`Game ${i}. Computer ${computerScore} : Player ${playerScore} : Tie ${tied}.`);
-                break;
-            case a == rock && b == scissors:
-            case a == scissors && b == paper:
-            case a == paper && b == rock:
-                console.log(`Player played ${b}, computer played ${a}. Computer wins!`);
-                computerScore += 1;
-                console.log(`Game ${i}. Computer ${computerScore} : Player ${playerScore} : Tie ${tied}.`);
-                break;
-            case a == rock && b == paper:
-            case a == scissors && b == rock:
-            case a == paper && b == scissors:
-                console.log(`Player played ${b}, computer played ${a}. Player wins!`);
-                playerScore += 1;
-                console.log(`Game ${i}. Computer ${computerScore} : Player ${playerScore} : Tie ${tied}.`);
-                break;
-            default:
-                i--;
-                alert("Please type either: rock, paper or scissors.");
-                    }
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let playerChoice ='';
+        if (button.id == rock){
+            playerChoice += rock;
+        } else if (button.id == paper) {
+            playerChoice += paper;
+        } else if (button.id == scissors) {
+            playerChoice += scissors;
         }
-    
-    if (computerScore == playerScore) {
-        console.log("Tied game!")
-        } else if (computerScore > playerScore) {
-        console.log("Computer wins!")
-        } else {
-        console.log("Player wins! Well done.")
-        };
-};  
+        janken(computerSelection, playerChoice);
+    })
+})
+const computerSelection = computerPlay(Math.floor(Math.random() * 3));
+function computerPlay(number) {
+    if (number === 0) {
+        return rock;
+    } else if (number === 1) {
+        return paper;
+    } else {
+        return scissors;
+    }
+}
 
-game();
+
+function janken(a, b) {
+    switch(true){
+        case a == rock && b == rock:
+        case a == paper && b == paper:
+        case a == scissors && b == scissors:
+            console.log(`Player played ${b}, computer played ${a}. It's a tie!`);
+            tied += 1;
+            break;
+        case a == rock && b == scissors:
+        case a == scissors && b == paper:
+        case a == paper && b == rock:
+            console.log(`Player played ${b}, computer played ${a}. Computer wins!`);
+            computerScore += 1;
+            break;
+        case a == rock && b == paper:
+        case a == scissors && b == rock:
+        case a == paper && b == scissors:
+            console.log(`Player played ${b}, computer played ${a}. Player wins!`);
+            playerScore += 1;
+            break;
+        default:
+            alert("Error.");
+                }
+    }
+    
+if (computerScore == playerScore) {
+    console.log("Tied game!")
+    } else if (computerScore > playerScore) {
+    console.log("Computer wins!")
+    } else {
+    console.log("Player wins! Well done.")
+    };
+  
