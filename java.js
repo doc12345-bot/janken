@@ -8,6 +8,7 @@ let tied = 0;
 const rockPlay = document.getElementById('rock');
 const paperPlay = document.getElementById('paper');
 const scissorsPlay = document.getElementById('scissors');
+const icons = document.getElementById('icons');
 
 const buttons = document.querySelectorAll('button');
 
@@ -38,6 +39,7 @@ function janken(a, b) {
         case a == rock && b == rock:
         case a == paper && b == paper:
         case a == scissors && b == scissors:
+            icons.classList.add('chosen')
             result = `Player played ${b}, computer played ${a}. It's a tie!`
             tied += 1;
             score = `Player score: ${playerScore}
@@ -66,15 +68,19 @@ function janken(a, b) {
             alert("Error.");
             }
 
+            if(playerScore == 5) {
+                rockPlay.disabled = true;
+                paperPlay.disabled = true;
+                scissorsPlay.disable = true;
+                alert ("You won! Hit reset to play again.");
+            } else if (computerScore == 5) {
+                rockPlay.disabled = true;
+                paperPlay.disabled = true;
+                scissorsPlay.disable = true;
+                alert ("Computer wins! Hit reset to try again.");
+            } 
+
         document.getElementById('result').innerHTML = result;
         document.getElementById('score').innerHTML = score;
     }
-    
-if (computerScore == playerScore) {
-    console.log("Tied game!")
-    } else if (computerScore > playerScore) {
-    console.log("Computer wins!")
-    } else {
-    console.log("Player wins! Well done.")
-    };
-  
+
