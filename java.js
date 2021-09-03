@@ -21,44 +21,53 @@ buttons.forEach((button) => {
         } else if (button.id == scissors) {
             playerChoice += scissors;
         }
-        janken(computerSelection, playerChoice);
+        janken(computerPlay(), playerChoice);
     })
 })
-const computerSelection = computerPlay(Math.floor(Math.random() * 3));
-function computerPlay(number) {
-    if (number === 0) {
-        return rock;
-    } else if (number === 1) {
-        return paper;
-    } else {
-        return scissors;
-    }
+
+function computerPlay() {
+    let selection = [rock, paper, scissors];
+    return selection[Math.floor(Math.random() * selection.length)];
 }
 
-
 function janken(a, b) {
+    let result = '';
+    let score = '';
+
     switch(true){
         case a == rock && b == rock:
         case a == paper && b == paper:
         case a == scissors && b == scissors:
-            console.log(`Player played ${b}, computer played ${a}. It's a tie!`);
+            result = `Player played ${b}, computer played ${a}. It's a tie!`
             tied += 1;
+            score = `Player score: ${playerScore}
+            Computer score: ${computerScore}
+            Tied games: ${tied}`;
             break;
         case a == rock && b == scissors:
         case a == scissors && b == paper:
         case a == paper && b == rock:
-            console.log(`Player played ${b}, computer played ${a}. Computer wins!`);
+            result = `Player played ${b}, computer played ${a}. Computer wins!`;
             computerScore += 1;
+            score = `Player score: ${playerScore}
+            Computer score: ${computerScore}
+            Tied games: ${tied}`;
             break;
         case a == rock && b == paper:
         case a == scissors && b == rock:
         case a == paper && b == scissors:
-            console.log(`Player played ${b}, computer played ${a}. Player wins!`);
+            result = `Player played ${b}, computer played ${a}. Player wins!`;
             playerScore += 1;
+            score = `Player score: ${playerScore}
+            Computer score: ${computerScore}
+            Tied games: ${tied}`;
             break;
         default:
             alert("Error.");
-                }
+            }
+
+        document.getElementById('result').innerHTML = result;
+        document.getElementById('score').innerHTML = score;
     }
     
 if (computerScore == playerScore) {
