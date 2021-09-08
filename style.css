@@ -93,8 +93,8 @@ h1 {
 
 .chosen {
     transform: scale(1.1);
-    border-color: rgb(255, 0, 0);
-    box-shadow: 0 0 1rem rgb(255, 0, 0);
+    border-color: rgba(255, 238, 0, 0.801);
+    box-shadow: 0 0 1rem rgba(149, 151, 3, 0.938);
 }
 
 .bottomnav {
