@@ -61,8 +61,8 @@ function janken(a, b) {
         case a == scissors && b == scissors:
             result = `Player played ${b}, computer played ${a}. It's a tie!`
             tied += 1;
-            score = `Player score: ${playerScore}
-            Computer score: ${computerScore}
+            score = `Player score: ${playerScore}<br>
+            Computer score: ${computerScore}<br>
             Tied games: ${tied}`;
             break;
         case a == rock && b == scissors:
@@ -70,8 +70,8 @@ function janken(a, b) {
         case a == paper && b == rock:
             result = `Player played ${b}, computer played ${a}. Computer wins!`;
             computerScore += 1;
-            score = `Player score: ${playerScore}
-            Computer score: ${computerScore}
+            score = `Player score: ${playerScore}<br>
+            Computer score: ${computerScore}<br>
             Tied games: ${tied}`;
             break;
         case a == rock && b == paper:
@@ -79,8 +79,8 @@ function janken(a, b) {
         case a == paper && b == scissors:
             result = `Player played ${b}, computer played ${a}. Player wins!`;
             playerScore += 1;
-            score = `Player score: ${playerScore}
-            Computer score: ${computerScore}
+            score = `Player score: ${playerScore}<br>
+            Computer score: ${computerScore}<br>
             Tied games: ${tied}`;
             break;
         default:
@@ -107,10 +107,9 @@ function reset() {
     playerScore = 0;
     computerScore = 0;
     tied = 0;
-    if (rockPlay.disabled != true){
-        result = '';
-        document.getElementById('result').innerHTML = result;
-    }
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('score').innerHTML = '';
+
     rockPlay.disabled = false;
     paperPlay.disabled = false;
     scissorsPlay.disabled = false;
